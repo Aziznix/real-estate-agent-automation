@@ -3,7 +3,7 @@
 #include <string.h>
 #include <unistd.h>
 
-struct kullanicibilgi {                        // tüm kullanicilarin verisinin tutuldugu kisim
+struct kullanicibilgi {                        // tÃ¼m kullanicilarin verisinin tutuldugu kisim
     int kullanicisayi;
     char kullaniciadi[100][10];
     char kullanicisifre[100][10];
@@ -15,14 +15,14 @@ struct ilanekle {                                   // ilan bilgilerinin tutuldu
     char mahalle[100][20];
     char sokak[100][20];
     char no[100][20];
-    // yukarisi adres için
-    char tip[100][10];                   // tip 1 = daire&müstakil
+    // yukarisi adres iÃ§in
+    char tip[100][10];                   // tip 1 = daire&mÃ¼stakil
     char tip2[100][10];                  //tip2=satilik&kiralik
-    char fiat[100][50], kare[100][50];      // fiat = mülkün fiyati kare=mülkün metre karesi
+    char fiat[100][50], kare[100][50];      // fiat = mÃ¼lkÃ¼n fiyati kare=mÃ¼lkÃ¼n metre karesi
     char tur[100][10];                      // Arsami ev mi tarlami olayi
-    char oda[100][5];                       // Evin kaç odali oldugunu sormak icin sadece tur=ev olunca calisiyor
+    char oda[100][5];                       // Evin kaÃ§ odali oldugunu sormak icin sadece tur=ev olunca calisiyor
     char telno[100][12];                    // iletisim numarasi icin
-    int ilanno;                            // ilan numarasi her uygulama açildiginda 0'dan baslar max 100 üye kayit olabilir artirmak için void kayittan artirabilirsiniz
+    int ilanno;                            // ilan numarasi her uygulama aÃ§ildiginda 0'dan baslar max 100 Ã¼ye kayit olabilir artirmak iÃ§in void kayittan artirabilirsiniz
 };
 
 void ilanekleme(struct ilanekle *ilanlar) {
@@ -47,7 +47,7 @@ void ilanekleme(struct ilanekle *ilanlar) {
             system("cls");
             ilanekleme(ilanlar);
 	}
-    if (strcmp(ilanlar->tur[ilanlar->ilanno], "Ev") == 0 || strcmp(ilanlar->tur[ilanlar->ilanno], "ev") == 0 ||  // evin her türlü giris secenegi icin bu sekilde yazildi
+    if (strcmp(ilanlar->tur[ilanlar->ilanno], "Ev") == 0 || strcmp(ilanlar->tur[ilanlar->ilanno], "ev") == 0 ||  // evin her tÃ¼rlÃ¼ giris secenegi icin bu sekilde yazildi
         strcmp(ilanlar->tur[ilanlar->ilanno], "EV") == 0) {                                                      // Farkli secenekler eklenicekse su sekilde eklenebilir
         printf("                                         -------------Gelisim Emlak------------- \n");           //|| strcmp(ilanlar->tur[ilanlar->ilanno], "secenek") == 0
 		printf("                                         |             Ilan Ekleme             |\n");
@@ -122,7 +122,7 @@ void ilanekleme(struct ilanekle *ilanlar) {
 
 void ilankaldir(struct ilanekle *ilanlar) {
 	
-    int ilankaldir;                       //kaldirilicak ilanin numarasini almak içino lan degisken
+    int ilankaldir;                       //kaldirilicak ilanin numarasini almak iÃ§ino lan degisken
     int i;
 
     if (ilanlar->ilanno == 0) {
@@ -136,7 +136,7 @@ void ilankaldir(struct ilanekle *ilanlar) {
         } else {
             for (i = ilankaldir - 1; i < ilanlar->ilanno - 1; ++i) {
                 strcpy(ilanlar->il[i], ilanlar->il[i + 1]);                                    // buradaki temel mantik mesela 1. numarada bir ilan var biz bunu kaldirmak istiyoruz
-                strcpy(ilanlar->ilce[i], ilanlar->ilce[i + 1]);                                // 1.deki ilanin üstüne 2. numaradaki ilanin bilgilerini yaziyor(Aslinda degistiriyor)
+                strcpy(ilanlar->ilce[i], ilanlar->ilce[i + 1]);                                // 1.deki ilanin Ã¼stÃ¼ne 2. numaradaki ilanin bilgilerini yaziyor(Aslinda degistiriyor)
                 strcpy(ilanlar->mahalle[i], ilanlar->mahalle[i + 1]);                         
                 strcpy(ilanlar->sokak[i], ilanlar->sokak[i + 1]);
                 strcpy(ilanlar->no[i], ilanlar->no[i + 1]);
@@ -151,7 +151,7 @@ void ilankaldir(struct ilanekle *ilanlar) {
 
             ilanlar->ilanno--;             // ilan numarasi bir eksiliyor 
 
-            strcpy(ilanlar->il[ilanlar->ilanno], "");                                        // en sondaki ilan numarasinin içini null degere ceviriyor 
+            strcpy(ilanlar->il[ilanlar->ilanno], "");                                        // en sondaki ilan numarasinin iÃ§ini null degere ceviriyor 
             strcpy(ilanlar->ilce[ilanlar->ilanno], "");
             strcpy(ilanlar->mahalle[ilanlar->ilanno], "");
             strcpy(ilanlar->sokak[ilanlar->ilanno], "");
@@ -198,7 +198,7 @@ void ilanlisteleme(struct ilanekle *ilanlar) {
 	if(ilanlar->ilanno == 0){
 		printf("                                         Ilan bulunamadi veya eklenmemis!!\n");
 	}
-	printf("                                         Cikis yapmak için klavyeden herhangi bir deger girin: ");
+	printf("                                         Cikis yapmak iÃ§in klavyeden herhangi bir deger girin: ");
 	scanf("%s",&c);
 	if(c==1){
 		printf("                                         Cikis yapiliyor....");
@@ -215,7 +215,7 @@ void ilanlisteleme(struct ilanekle *ilanlar) {
 void olcer(struct ilanekle *menuilan){
 	int mulk,sm;
 	float kira,bedel,alan;
-	int birim = 330;  //                                                      <----------------------------------- Bu degeri güncel tarihe göre degistirebiliriniz 
+	int birim = 330;  //                                                      <----------------------------------- Bu degeri gÃ¼ncel tarihe gÃ¶re degistirebiliriniz 
 	printf("                                         -------------Gelisim Emlak------------- \n");
     printf("                                         |        Mulk Degeri Hesaplama        |\n");
     printf("                                         |Mulkunuzun tipini seciniz            |\n");
@@ -258,7 +258,7 @@ void olcer(struct ilanekle *menuilan){
 		  	bedel=kira*214*160/100;
 		  	printf("                                         Evinizin ortalama bedeli %.2f TL",bedel);
 		  }
-		  else if(sm==3){                                                //yüksek segment Ev
+		  else if(sm==3){                                                //yÃ¼ksek segment Ev
 		  	printf("                                         Evinizin ortalama aylik kira bedeli: ");
 		  	scanf("%f",&kira);
 		  	system("cls");
@@ -324,7 +324,7 @@ void adminMenu(struct kullanicibilgi *kullanicilar, struct ilanekle *menuilan) {
             			printf("                                         %d.Kullanicinin Adi: %s\n",x+1,kullanicilar->kullaniciadi[x]);
             			printf("                                         %d.Kullanicinin Sifresi: %s\n\n",x+1,kullanicilar->kullanicisifre[x]);
 					}
-					printf("                                         Cikis yapmak için klavyeden herhangi bir deger girin: ");
+					printf("                                         Cikis yapmak iÃ§in klavyeden herhangi bir deger girin: ");
 					scanf("%s",&c);
 					if(c==1){
 						printf("                                         Cikis yapiliyor....");
@@ -439,7 +439,7 @@ void normalMenu(struct ilanekle *menuilan) {
         ilanlisteleme(menuilan);
     } else if (m == 4) {
        	olcer(menuilan);
-    } else if(m == 5){                               // burada oturum kapatilip kayit menüsüne atiliyor 
+    } else if(m == 5){                               // burada oturum kapatilip kayit menÃ¼sÃ¼ne atiliyor 
     	printf("                                         Oturum Kapatiliyor!!");
     	sleep(2);
     	system("cls");
@@ -460,9 +460,9 @@ void normalMenu(struct ilanekle *menuilan) {
 void kayit(struct kullanicibilgi *kullanicilar) {
 	int p;
 	char kayitad[10],kayitsifre[10];
-    if (kullanicilar->kullanicisayi < 100) {                                                                // if'in içindeki 100 degerini artirirsak max kullanicida artar fakat struct
+    if (kullanicilar->kullanicisayi < 100) {                                                                // if'in iÃ§indeki 100 degerini artirirsak max kullanicida artar fakat struct
         printf("                                         Kullanici adi giriniz (max 10 karakter): ");        // kullanicibilgi deki kullaniciadi ve kullanicisifre dizisininde icini 
-        scanf("%s", kayitad);                                // de degistirmek gerekiyor aksi takdirde burda degismemiz bir önem teskil etmeyecektir
+        scanf("%s", kayitad);                                // de degistirmek gerekiyor aksi takdirde burda degismemiz bir Ã¶nem teskil etmeyecektir
         for(p=0;p<kullanicilar->kullanicisayi+1;p++){
         	if(strcmp(kayitad, kullanicilar->kullaniciadi[p])== 0){
         		printf("                                         Bu kullanici adi kullaniliyor lutfen baska bir kullanici adi giriniz");
@@ -471,9 +471,9 @@ void kayit(struct kullanicibilgi *kullanicilar) {
         		return 0;
 			}
 		}
-        // buraya eger önceden ayni kullanici adi kullanildiysa o kullanici adini kullanamama eklenicek
+        // buraya eger Ã¶nceden ayni kullanici adi kullanildiysa o kullanici adini kullanamama eklenicek
         
-        if(strcmp(kayitad, "admin")!=0){                            // buradaki admin ismini giristeki admin bilgilerine göre güncelleyebilirsiniz
+        if(strcmp(kayitad, "admin")!=0){                            // buradaki admin ismini giristeki admin bilgilerine gÃ¶re gÃ¼ncelleyebilirsiniz
         	printf("                                         Sifre giriniz (max 10 karakter): ");
 	        scanf("%s", kayitsifre);
 	        
@@ -498,8 +498,8 @@ void kayit(struct kullanicibilgi *kullanicilar) {
 }
 
 void giris(struct kullanicibilgi *kullanicilar, struct ilanekle *menuilan) {
-    char sorguad[10], sorgusifre[10]; //sorgu için
-    char adminAd[]="admin",adminSifre[]="admin";  //Admin menüsü için giris bilgileri burada 
+    char sorguad[10], sorgusifre[10]; //sorgu iÃ§in
+    char adminAd[]="admin",adminSifre[]="admin";  //Admin menÃ¼sÃ¼ iÃ§in giris bilgileri burada 
 	int i;
 	
     printf("                                         Kullanici Adiniz : ");
@@ -508,21 +508,21 @@ void giris(struct kullanicibilgi *kullanicilar, struct ilanekle *menuilan) {
     scanf("%s", sorgusifre);
 
     
-    if(strcmp(sorguad, adminAd)==0 && strcmp(sorgusifre, adminSifre)== 0){          // admin menüsü girisi icin
+    if(strcmp(sorguad, adminAd)==0 && strcmp(sorgusifre, adminSifre)== 0){          // admin menÃ¼sÃ¼ girisi icin
     	printf("                                         Hosgeldin Admin");
     	sleep(2);
     	system("cls");
-    	adminMenu(kullanicilar, menuilan);                              // admin menüsü 
+    	adminMenu(kullanicilar, menuilan);                              // admin menÃ¼sÃ¼ 
 	}
 	else{
-		for (i = 0; i < kullanicilar->kullanicisayi; i++) {         // normal kullanicilar için
+		for (i = 0; i < kullanicilar->kullanicisayi; i++) {         // normal kullanicilar iÃ§in
         if (strcmp(sorguad, kullanicilar->kullaniciadi[i]) == 0) {
             if (strcmp(sorgusifre, kullanicilar->kullanicisifre[i]) == 0) {
                 printf("                                            Giris basarili!\n");
                 printf("                                              Hosgeldin %s",sorguad);
                 sleep(3);
                 system("cls");
-                normalMenu(menuilan);                               // normal menüye bu kisimda atiliyor
+                normalMenu(menuilan);                               // normal menÃ¼ye bu kisimda atiliyor
                 return;
             } else {
                 printf("                                         Sifre yanlis ; sifrenizi unuttuysaniz yetkililerle iletisime gecebilirsiniz.\n");
@@ -542,9 +542,9 @@ void giris(struct kullanicibilgi *kullanicilar, struct ilanekle *menuilan) {
 }
 
 int main() {
-    struct kullanicibilgi kullanicilar; // kullanici bilgilerinin çekildigi kisim
-    struct ilanekle menuilan;          // ilan bilgilerinin çekildigi kesim
-    kullanicilar.kullanicisayi = 0;   // kullanici sayisinin tutuldugu kisim !!!!  buradaki sayiyi hiç bir sekilde ellemeyiniz  !!!!
+    struct kullanicibilgi kullanicilar; // kullanici bilgilerinin Ã§ekildigi kisim
+    struct ilanekle menuilan;          // ilan bilgilerinin Ã§ekildigi kesim
+    kullanicilar.kullanicisayi = 0;   // kullanici sayisinin tutuldugu kisim !!!!  buradaki sayiyi hiÃ§ bir sekilde ellemeyiniz  !!!!
 
     int secim;
     printf(" .. .  . Abdulaziz  . .. .  . .  . .. .  .@@ .  . .. .  . .. . .. .  . .. .  . .   ... .  . .  . .. .  . . \n");
